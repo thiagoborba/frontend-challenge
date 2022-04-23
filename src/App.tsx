@@ -1,10 +1,14 @@
 import React from 'react';
+import { Structure } from './Components'
+import { ThemeProvider } from './Theme';
 
 function App() {
   return (
-    <div>
-      teste asdasdasdasd
-    </div>
+    <ThemeProvider>
+      <Structure>
+        asdasdasd
+      </Structure>
+    </ThemeProvider>
   );
 }
 

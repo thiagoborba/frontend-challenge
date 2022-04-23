@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 100px;
+  height: 100px;
+  background-color: #0F0F0F;
+}
+
+.logo {
+  font-size: 32px;
+  letter-spacing: 1.28px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFE81F;
+}
+
+.casting {
+  padding-left: 16px;
+  font-size: 24px;
+  letter-spacing: 0.96px;
+  line-height: 30px;
+  color: #FFE81F;
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  color: #FFF;
+  width: 273px;
+  border-radius: 999px;
+  &:hover {
+    opacity: 0.4;
+  }
+}
