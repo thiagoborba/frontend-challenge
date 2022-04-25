@@ -1,0 +1,41 @@
+$baseline: 8px;
+
+.spacing {
+  height: 0;
+
+  &.-xxx-small {
+    height: calc($baseline / 2);
+  }
+
+  &.-xx-small {
+    height: $baseline;
+  }
+
+  &.-x-small {
+    height: calc($baseline + $baseline / 2);
+  }
+
+  &.-small {
+    height: calc($baseline * 2);
+  }
+
+  &.-medium {
+    height: calc($baseline * 3);
+  }
+
+  &.-large {
+    height: calc($baseline * 4);
+  }
+
+  &.-x-large {
+    height: calc($baseline * 5);
+  }
+
+  &.-xx-large {
+    height: calc($baseline * 6);
+  }
+
+  &.-xxx-large {
+    height: calc($baseline * 8);
+  }
+}
