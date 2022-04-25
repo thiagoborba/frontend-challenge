@@ -1,0 +1,61 @@
+@import "../../styles/variables";
+
+.title {
+  color: $yellow;
+  margin: 0;
+  font-size: $typographySizeXLarge;
+  font-weight: $typographyWeightBold;
+  font-family: $typographyFamilyBase;
+  letter-spacing: 1.6px;
+  line-height: $typographyLineXLarge;
+
+  &.-lightSolid {
+    color: $lightSolid;
+  }
+
+  @at-root h1#{&} {
+    font-size: $typographySizeXLarge;
+  }
+
+  @at-root h2#{&} {
+    font-size: $typographySizeLarge;
+  }
+
+  @at-root h3#{&} {
+    font-size: $typographySizeMedium;
+  }
+
+  @at-root h4#{&} {
+    font-size: $typographySizeSmall;
+  }
+
+  @at-root h5#{&} {
+    font-size: $typographySizeXSmall;
+  }
+
+  @at-root h6#{&} {
+    font-size: $typographySizeXXXSmall;
+  }
+
+  @media (max-width: $responsiveSm) {
+    @at-root h1#{&} {
+      font-size: $typographySizeLarge;
+    }
+  
+    @at-root h2#{&} {
+      font-size: $typographySizeMedium;
+    }
+
+    @at-root h3#{&} {
+      font-size: $typographySizeSmall;
+    }
+  
+    @at-root h4#{&} {
+      font-size: $typographySizeXSmall;
+    }
+  
+    @at-root h5#{&} {
+      font-size: $typographySizeXXSmall;
+    }
+  }
+}
