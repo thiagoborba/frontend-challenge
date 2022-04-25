@@ -1,14 +1,12 @@
 import React from 'react';
 import { Structure } from './Components'
-import { ThemeProvider } from './Theme';
+import { Routes } from './Routes';
 
 function App() {
   return (
-    <ThemeProvider>
-      <Structure>
-        asdasdasd
-      </Structure>
-    </ThemeProvider>
+    <Structure>
+      <Routes />
+    </Structure>
   );
 }
 
