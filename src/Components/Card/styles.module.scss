@@ -1,9 +1,13 @@
 @import "../../styles/variables";
 
 .card {
+  cursor: pointer;
   width: 273px;
   height: 448px;
-  background: $darkGrey 0% 0% no-repeat padding-box;
+  background-color: $darkGrey;
   border: 2px solid $lightGrey;
-  
+  &:hover {
+    box-shadow: 0 2px 4px 0 $lightSolid;
+  }
+  padding: Calc($baseline * 2)
 }

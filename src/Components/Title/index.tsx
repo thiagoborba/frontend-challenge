@@ -11,11 +11,8 @@ type As =
   | 'h6'
 
 type Color =
-  | 'darkLow'
-  | 'darkMedium'
-  | 'darkHigh'
   | 'lightSolid'
-  | 'lightHigh'
+  | 'yellow'
 
 export interface Props extends React.HTMLAttributes<HTMLHeadingElement> {
   as?: As,
@@ -33,11 +30,8 @@ export const Title: React.FunctionComponent<Props> = ({
   return (
     <Component
       className={cn(styles['title'], className, {
-        [styles['-darkLow']]: color === 'darkLow',
-        [styles['-darkMedium']]: color === 'darkMedium',
-        [styles['-darkHigh']]: color === 'darkHigh',
+        [styles['-yellow']]: color === 'yellow',
         [styles['-lightSolid']]: color === 'lightSolid',
-        [styles['-lightHigh']]: color === 'lightHigh',
       })}
       {...props}
     >
@@ -48,7 +42,7 @@ export const Title: React.FunctionComponent<Props> = ({
 
 Title.defaultProps = {
   as: 'h1',
-  color: 'darkHigh'
+  color: 'yellow'
 }
 
 export default Title;

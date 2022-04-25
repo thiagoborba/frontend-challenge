@@ -4,13 +4,14 @@
   color: $yellow;
   margin: 0;
   font-size: $typographySizeXLarge;
-  font-weight: $typographyWeightBold;
   font-family: $typographyFamilyBase;
-  letter-spacing: 1.6px;
-  line-height: $typographyLineXLarge;
 
   &.-lightSolid {
     color: $lightSolid;
+  }
+
+  &.-yellow {
+    color: $yellow;
   }
 
   @at-root h1#{&} {
