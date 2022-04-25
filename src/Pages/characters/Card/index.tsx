@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '../../../Components/Card'
 import { Character } from '../../../Api/models';
 import { Paragraph, Spacing, Title } from '../../../Components';
-import Characters from '..';
 
 type Props = {
   character: Pick<Character, "birth_year" | "homeworld" | 'species' | 'height' | 'vehicles' | 'name'>;

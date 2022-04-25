@@ -1,22 +1,21 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { initialize } from '../../Api';
 import { Input, Layout, Spacing, Title } from '../../Components'
 import { CharacterCard } from './Card'
 import { Grid } from '../../Components/Grid'
 import styles from './styles.module.scss';
 import { GlobalContext } from '../../Context'
-import Card from '../../Components/Card';
 
-const INITIAL_STATE = {
-  loading: false,
-  pagination: {
-    totalOfPages: 1,
-    currentPage: 1,
-  }
-}
+// const INITIAL_STATE = {
+//   loading: false,
+//   pagination: {
+//     totalOfPages: 1,
+//     currentPage: 1,
+//   }
+// }
 
 export const Characters: React.FC = () => {
-  const [{ pagination }, setState] = useState(INITIAL_STATE)
+  // const [{ pagination }, setState] = useState(INITIAL_STATE)
 
   const { state, dispatch, ActionTypes } = GlobalContext()
   const { characters, planets, species, vehicles } = state
