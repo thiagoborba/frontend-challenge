@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+
+.button {
+  cursor: pointer;
+  width: 174px;
+  height: 42px;
+  border: 2px solid $yellow;
+  &:hover {
+    opacity: 0.4;
+  };
+  color: $lightSolid;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:active {
+    background: $lightGrey;
+    transition: .5s ease-out;
+  }
+}

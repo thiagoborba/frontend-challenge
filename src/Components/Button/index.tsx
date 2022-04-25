@@ -1,12 +1,16 @@
-import { Button as Materialbutton, ButtonProps } from '@mui/material'
-import {  styled } from '@mui/material/styles';
+import React from 'react'
+import styles from './styles.module.scss'
+import cn from 'clsx'
 
-export const Button = styled(Materialbutton)<ButtonProps>(({ theme, color }) => ({
-  color: color || theme.palette.secondary.contrastText,
-  width: '174px',
-  height: '42px',
-  border: `2px solid ${theme.palette.secondary.contrastText}`,
-  ':hover': {
-    opacity: 0.4,
-  },
-}));
+interface Props extends React.HTMLAttributes<HTMLButtonElement> {}
+
+export const Button: React.FC<Props> = ({ className, ...props }) => {
+  return (
+    <button
+      className={cn(styles.button, className)}
+      { ...props }
+    />
+  )
+}
+
+export default Button

@@ -1,2 +1,7 @@
-export { Structure } from './Structure'
 export { Button } from './Button'
+export { Structure } from './Structure'
+export { Input } from './Input'
+export { Layout } from './Layout'
+export { Paragraph } from './Paragraph'
+export { Spacing } from './Spacing'
+export { Title } from './Title'
