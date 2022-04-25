@@ -1,5 +1,5 @@
 import React from 'react'
-import { TopAppBar } from './AppBar'
+import { Header } from './Header'
 import styles from './styles.module.scss'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {}
@@ -7,7 +7,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 export const Structure: React.FC<Props> = (props) => {
   return (
     <div className={styles.root}>
-      <TopAppBar />
+      <Header/>
       <main className={styles.content}>
         { props.children }
       </main>
