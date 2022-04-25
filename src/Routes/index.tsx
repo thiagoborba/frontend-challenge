@@ -4,14 +4,17 @@ import {
   Routes as Switch,
   Route,
 } from "react-router-dom";
+import { Structure } from '../Components';
 import { PAGE } from '../constants'
 import { Characters } from '../Pages'
 
 export const Routes = () => (
   <BrowserRouter>
-    <Switch>
-      <Route path={PAGE.CHARACTERS()} element={<Characters/>}/>
-    </Switch>
+    <Structure>
+      <Switch>
+        <Route path={PAGE.CHARACTERS()} element={<Characters/>}/>
+      </Switch>
+    </Structure>
   </BrowserRouter>
 )
 

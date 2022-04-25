@@ -1,12 +1,14 @@
-import React from 'react';
-import { Structure } from './Components'
+import React, { Fragment } from 'react';
 import { Routes } from './Routes';
+import { GlobalContextProvider } from './Context'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Structure>
-      <Routes />
-    </Structure>
+    <Fragment>
+      <GlobalContextProvider >
+        <Routes />
+      </GlobalContextProvider>
+    </Fragment>
   );
 }
 
