@@ -1,0 +1,47 @@
+$typographyFamilyBase: "Star Jedi" !default;
+$typographyAlternative: "Roboto", sans-serif !default;
+
+$baseline: 8px;
+
+$typographySizeXXXSmall: 16px !default;
+$typographySizeXXSmall: 18px !default;
+$typographySizeXSmall: 20px !default;
+$typographySizeSmall: 24px !default;
+$typographySizeMedium: 32px !default;
+$typographySizeLarge: 40px !default;
+$typographySizeXLarge: 48px !default;
+
+$typographyWeightRegular: 400 !default;
+$typographyWeightBold: 700 !default;
+
+$typographyLineXXXSmall: 20px !default;
+$typographyLineXXSmall: 22px !default;
+$typographyLineXSmall: 24px !default;
+$typographyLineSmall: 28px !default;
+$typographyLineMedium: 36px !default;
+$typographyLineLarge: 44px !default;
+$typographyLineXLarge: 52px !default;
+
+:export {
+  baseline: $baseline;
+  typographyFamilyBase: $typographyFamilyBase;
+
+  typographySizeXXXSmall: $typographySizeXXXSmall;
+  typographySizeXXSmall: $typographySizeXXSmall;
+  typographySizeXSmall: $typographySizeXSmall;
+  typographySizeSmall: $typographySizeSmall;
+  typographySizeMedium: $typographySizeMedium;
+  typographySizeLarge: $typographySizeLarge;
+  typographySizeXLarge: $typographySizeXLarge;
+  
+  typographyWeightRegular: $typographyWeightRegular;
+  typographyWeightBold: $typographyWeightBold;
+  
+  typographyLineXXXSmall: $typographyLineXXXSmall;
+  typographyLineXXSmall: $typographyLineXXSmall;
+  typographyLineXSmall: $typographyLineXSmall;
+  typographyLineSmall: $typographyLineSmall;
+  typographyLineMedium: $typographyLineMedium;
+  typographyLineLarge: $typographyLineLarge;
+  typographyLineXLarge: $typographyLineXLarge;
+}

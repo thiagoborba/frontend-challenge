@@ -1,0 +1,11 @@
+$responsiveSm: 576px;
+$responsiveMd: 768px;
+$responsiveLg: 1024px;
+$responsiveXLg: 1366px;
+
+:export {
+  responsiveSm: $responsiveSm;
+  responsiveMd: $responsiveMd;
+  responsiveLg: $responsiveLg;
+  responsiveXLg: $responsiveXLg;
+}
