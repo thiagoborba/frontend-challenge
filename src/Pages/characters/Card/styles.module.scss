@@ -1,0 +1,10 @@
+@import "../../../styles/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  button {
+    margin: auto auto $baseline auto;
+    color: $yellow;
+  }
+}

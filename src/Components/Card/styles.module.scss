@@ -6,8 +6,6 @@
   height: 448px;
   background-color: $darkGrey;
   border: 2px solid $lightGrey;
-  &:hover {
-    box-shadow: 0 2px 4px 0 $lightSolid;
-  }
-  padding: Calc($baseline * 2)
+  padding: Calc($baseline * 2);
+  position: relative;
 }

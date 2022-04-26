@@ -1,10 +1,17 @@
 import React from 'react'
 import { Button } from '../../'
 import styles from './styles.module.scss'
+import cn from 'clsx'
+import { useLocation } from 'react-router-dom'
+import { PAGE } from '../../../constants'
 
 interface Props extends React.HTMLAttributes<HTMLHeadElement> {}
 
 export const Header: React.FC<Props> = (props) => {
+  const { pathname } = useLocation()
+  const pageCharacters = PAGE.CHARACTERS()
+  const pageFilmes = PAGE.FILMS()
+
   return (
     <header
       { ...props }
@@ -24,10 +31,14 @@ export const Header: React.FC<Props> = (props) => {
         </div>
 
         <div className={styles['buttons-container']}>
-          <Button className={styles.button}>
+          <Button className={cn(styles.button, {
+            [styles['-active']]: pathname === pageCharacters,
+          })}>
             Personagens
           </Button>
-          <Button className={styles.button}>
+          <Button className={cn(styles.button, {
+            [styles['-active']]: pathname === pageFilmes,
+          })}>
             Filmes
           </Button>
         </div>
