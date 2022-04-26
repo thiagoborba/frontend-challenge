@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from '../../../Components/Card'
 import { Character } from '../../../Api/models';
-import { Button, Layout, Paragraph, Spacing, Title } from '../../../Components';
+import { Button, Paragraph, Spacing, Title } from '../../../Components';
 import styles from './styles.module.scss'
 
 type Props = {
