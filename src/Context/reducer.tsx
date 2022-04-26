@@ -6,7 +6,9 @@ import {
   GlobalContextProps
 } from "./models";
 
-export const initialState = {} as GlobalState;
+export const localStorage = JSON.parse(window.localStorage.getItem('state')!)
+
+export const initialState = localStorage || {} as GlobalState;
 
 const Context = createContext({} as GlobalContextProps);
 

@@ -12,6 +12,7 @@ export const Routes = () => (
   <BrowserRouter>
     <Structure>
       <Switch>
+        <Route path='*' element={<Characters/>}/>
         <Route path={PAGE.CHARACTERS()} element={<Characters/>}/>
       </Switch>
     </Structure>
