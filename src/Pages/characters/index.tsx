@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 import { GlobalContext, localStorage } from '../../Context'
 import { PAGE, PAGE_SIZE } from '../../constants';
 import { paginate } from '../../utils'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 type State ={
   loading: boolean,
