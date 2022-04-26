@@ -8,9 +8,12 @@ type Props = {
   character: Pick<Character, "birth_year" | "homeworld" | 'species' | 'height' | 'vehicles' | 'name'>;
 } 
 
-export const CharacterCard: React.FC<Props> = ({ character }) => {
+export const CharacterCard: React.FC<Props> = ({ character, ...props }) => {
   return (
-    <Card className={styles.container}>
+    <Card
+      className={styles.container}
+      { ...props }
+    >
       <Spacing appearance='xx-small'/>
       <Title as='h4'>
         { character.name }

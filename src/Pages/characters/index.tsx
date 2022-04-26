@@ -80,7 +80,7 @@ export const Characters: React.FC = () => {
     <Layout>
       <div className={styles.container}>
         <Spacing appearance='xx-large'/>
-        <Title as='h4'>Personagens</Title>
+        <Title as='h2'>Personagens</Title>
         <Spacing appearance='x-large'/>
         <Input
           placeholder='FILTRE POR NOME DO PERSONAGEM'

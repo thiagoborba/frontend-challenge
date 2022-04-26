@@ -20,6 +20,7 @@
 
   @at-root h2#{&} {
     font-size: $typographySizeLarge;
+    letter-spacing: 1.6px;
   }
 
   @at-root h3#{&} {
