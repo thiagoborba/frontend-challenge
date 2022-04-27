@@ -2,7 +2,9 @@ import React from 'react';
 import { Box, Input, Layout, Spacing, Title, Select, Textarea, Button } from '../../Components';
 import { GlobalContext } from '../../Context';
 import styles from './styles.module.scss';
-import { useFormik } from 'formik'
+import { useFormik, FormikErrors } from 'formik'
+import * as Yup from 'yup';
+import { EMAIL_REGEX, ERROR_DEFAULT } from '../../constants';
 
 const INITIAL_VALUES = {
   name: '',
@@ -16,12 +18,37 @@ const INITIAL_VALUES = {
   resume: ''
 }
 
+type Values = typeof INITIAL_VALUES
+
+const validate = (values: Values) => {
+  const errors: FormikErrors<Values> = {};
+
+  if (!values.email) errors.email = ERROR_DEFAULT
+  else if (!EMAIL_REGEX.test(values.email.toLowerCase()))
+    errors.email = "E-mail inválido";
+
+  return errors;
+};
+
 export const Register: React.FC = () => {
   const { state: { characters } } = GlobalContext()
 
-  const { values, handleBlur, handleChange, setFieldValue, handleSubmit }  = useFormik({
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required(ERROR_DEFAULT),
+    date: Yup.string().required(ERROR_DEFAULT),
+    phone: Yup.string().required(ERROR_DEFAULT),
+    password: Yup.string().required(ERROR_DEFAULT),
+    Rpassword: Yup.string().required(ERROR_DEFAULT),
+    character: Yup.string().required(ERROR_DEFAULT),
+    file: Yup.mixed().required(ERROR_DEFAULT),
+    resume: Yup.string().required(ERROR_DEFAULT)
+  });
+
+  const { values, handleBlur, handleChange, setFieldValue, handleSubmit, errors, submitCount }  = useFormik({
     initialValues: INITIAL_VALUES,
-    onSubmit: (values) => console.log(values)
+    onSubmit: (values) => console.log(values),
+    validate,
+    validationSchema
   })
 
   return (
@@ -48,6 +75,7 @@ export const Register: React.FC = () => {
             type='text'
             onChange={handleChange}
             onBlur={handleBlur}
+            errorMessage={submitCount && errors.name}
           />
           <Input
             name='date'
@@ -56,6 +84,7 @@ export const Register: React.FC = () => {
             type='date'
             onChange={handleChange}
             onBlur={handleBlur}
+            errorMessage={submitCount && errors.date}
           />
         </Box>
         <Spacing appearance='medium'/>
@@ -67,6 +96,7 @@ export const Register: React.FC = () => {
             type='email'
             onChange={handleChange}
             onBlur={handleBlur}
+            errorMessage={submitCount && errors.email}
           />
           <Input
             name='phone'
@@ -75,6 +105,7 @@ export const Register: React.FC = () => {
             type='tel'
             onChange={handleChange}
             onBlur={handleBlur}
+            errorMessage={submitCount && errors.phone}
           />
         </Box>
         <Spacing appearance='medium'/>
@@ -85,6 +116,7 @@ export const Register: React.FC = () => {
             type='password'
             onChange={handleChange}
             onBlur={handleBlur}
+            errorMessage={submitCount && errors.password}
           />
           <Input
             name='Rpassword'
@@ -92,6 +124,7 @@ export const Register: React.FC = () => {
             type='password'
             onChange={handleChange}
             onBlur={handleBlur}
+            errorMessage={submitCount && errors.Rpassword}
           />
         </Box>
         <Spacing appearance='medium'/>
@@ -100,10 +133,12 @@ export const Register: React.FC = () => {
         </Title>
         <Spacing appearance='xx-small'/>
         <Select
+          name='character'
           label='QUAL SEU PERSONAGEM FAVORITO?'
           data={characters.map(char => ({ label: char.name, value: char.name }))}
           onChange={e => setFieldValue('character', e.currentTarget.value)}
           value={values.character}
+          errorMessage={submitCount && errors.character}
         />
         <Spacing appearance='small'/>
         <Input
@@ -111,6 +146,7 @@ export const Register: React.FC = () => {
           label='ANEXE O SEU CURRÍCULO'
           type='file'
           onChange={e => setFieldValue('file', e.target.files)}
+          errorMessage={submitCount && errors.file}
         />
         <Spacing appearance='xx-small'/>
         <Textarea
@@ -119,6 +155,7 @@ export const Register: React.FC = () => {
           label='UM RESUMO DA SUA CARREIRA ARTISTICA'
           onChange={handleChange}
           onBlur={handleBlur}
+          errorMessage={submitCount && errors.resume}
         />
         <Spacing appearance='medium'/>
         <div className={styles['button-container']}>

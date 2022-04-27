@@ -5,6 +5,7 @@ $darkGrey: #303030;
 
 $lightSolid: #FFFFFF;
 $yellow: #FFE81F;
+$error: red;
 
 :export {
   darkLow: $darkLow;
@@ -12,4 +13,5 @@ $yellow: #FFE81F;
   lightGrey: $lightGrey;
   lightSolid: $lightSolid;
   yellow: $yellow;
+  error: $error
 }
