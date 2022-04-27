@@ -40,14 +40,14 @@ export const Characters: React.FC = () => {
       filterCards()
     } else {
       setState(prevState => ({ ...prevState, filteredCharacters: characters }))
-      PaginateCards(characters, 1, getTotalOfPages(characters.length))
+      PaginateCards(characters, 1, getTotalOfPages(characters?.length))
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterValue])
 
   function filterCards () {
     const filteredCharacters = characters.filter(char => char.name.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()))
-    PaginateCards(filteredCharacters, 1, getTotalOfPages(filteredCharacters.length))
+    PaginateCards(filteredCharacters, 1, getTotalOfPages(filteredCharacters?.length))
   }
 
   function getTotalOfPages (arraylength: number) {
@@ -76,7 +76,7 @@ export const Characters: React.FC = () => {
     if (!localStorage) {
       fetchStarWarsData()
     } else {
-      PaginateCards(characters, 1, getTotalOfPages(characters.length))
+      PaginateCards(characters, 1, getTotalOfPages(characters?.length))
     }
   }, [fetchStarWarsData, characters])
 
@@ -118,7 +118,7 @@ export const Characters: React.FC = () => {
             birth_year: character.birth_year!,
             height: character.height!,
             homeworld: planets.find(planet => planet.url === character.homeworld)?.name!,
-            species: !character.species.length ? character.species : [ species.find(specie => specie.url === character.species[0])?.name!],
+            species: !character.species?.length ? character.species : [ species.find(specie => specie.url === character.species[0])?.name!],
             vehicles: character.vehicles.map(vehicle => (vehicles.find(v => v.url === vehicle)!?.name))!
           }
 
