@@ -1,10 +1,26 @@
 @import "../../styles/variables";
 
 .container {
-  color: $lightSolid;
+  width: 100%;
+  max-width: 570px;
+  > input {
+    color: $lightSolid;
+    font-family: $typographyAlternative;
+    width: inherit;
+    max-width: inherit;
+    height: 40px;
+    background: #303030 0% 0% no-repeat padding-box;
+    border: 2px solid #606060;
+  }
+
+  input[type="file"] {
+    border: none;
+  }
+
+}
+
+.label {
   font-family: $typographyAlternative;
-  width: 570px;
-  height: 40px;
-  background: #303030 0% 0% no-repeat padding-box;
-  border: 2px solid #606060;
+  font-size: $typographySizeXXXSmall;
+  color: $lightSolid;
 }

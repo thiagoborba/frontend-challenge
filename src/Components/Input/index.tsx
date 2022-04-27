@@ -1,10 +1,13 @@
 import React from "react";
 import styles from './styles.module.scss'
 import cn from 'clsx'
+import Spacing from "../Spacing";
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string
+}
 
-export const Input: React.FC<Props> = (({ name, className, onChange, onBlur, ...props }) => {
+export const Input: React.FC<Props> = (({ name, className, onChange, onBlur, label, type,  ...props }) => {
   function handleBlur(e: React.FocusEvent<HTMLInputElement>): void {
     e.preventDefault()
     onBlur && onBlur(e);
@@ -16,13 +19,29 @@ export const Input: React.FC<Props> = (({ name, className, onChange, onBlur, ...
   }
 
   return (
-    <input
+    <div
       className={cn(styles['container'], className)}
-      id={`${name}-input`}
-      name={name}
-      onBlur={handleBlur}
-      onChange={handleChange}
-      {...props}
-    />
+    >
+      { label && (
+        <div>
+          <label
+            aria-labelledby={`${name}-input`}
+            className={styles.label}
+          > { label } </label>
+          <Spacing appearance="xx-small"/>
+        </div>
+      ) }
+      <input
+        className={cn({
+          [styles['-upload']]: type === 'file',
+        })}
+        id={`${name}-input`}
+        name={name}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        type={type}
+        {...props}
+      />
+    </div>
   )
 })
