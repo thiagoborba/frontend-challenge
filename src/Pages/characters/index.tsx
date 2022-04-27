@@ -28,7 +28,7 @@ export const Characters: React.FC = () => {
     loading: false,
     filteredCharacters: [],
     pagination: {
-      totalOfPages: getTotalOfPages(characters.length),
+      totalOfPages: getTotalOfPages(characters?.length),
       currentPage: Number(page),
     },
   })
@@ -79,7 +79,7 @@ export const Characters: React.FC = () => {
 
   useEffect(() => {
     const array = filterValue ? filteredCharacters : characters
-    PaginateCards(array, Number(page), getTotalOfPages(array.length))
+    PaginateCards(array, Number(page), getTotalOfPages(array?.length))
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
