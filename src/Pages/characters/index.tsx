@@ -38,6 +38,9 @@ export const Characters: React.FC = () => {
   useEffect(() => {
     if (filterValue) {
       filterCards()
+    } else {
+      setState(prevState => ({ ...prevState, filteredCharacters: characters }))
+      PaginateCards(characters, 1, getTotalOfPages(characters.length))
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterValue])
@@ -102,7 +105,6 @@ export const Characters: React.FC = () => {
         <Title as='h2'>Personagens</Title>
         <Spacing appearance='x-large'/>
         <Input
-          type='search'
           onChange={e => setFilterValue(e.target.value)}
           placeholder='FILTRE POR NOME DO PERSONAGEM'
         />
@@ -125,14 +127,16 @@ export const Characters: React.FC = () => {
           )
         }) }
       </Grid>
-      <div className={styles.container}>
-        <Spacing appearance='large'/>
-        <Pagination
-          onChange={(page) => navigate(`${PAGE.CHARACTERS()}?page=${page}`, { replace: true })}
-          currentPage={pagination.currentPage}
-          numberOfPages={pagination.totalOfPages}
-        />
-      </div>
+      { !filterValue && (
+        <div className={styles.container}>
+          <Spacing appearance='large'/>
+          <Pagination
+            onChange={(page) => navigate(`${PAGE.CHARACTERS()}?page=${page}`, { replace: true })}
+            currentPage={pagination.currentPage}
+            numberOfPages={pagination.totalOfPages}
+          />
+        </div>
+      )  }
     </Layout>
   )
 }
