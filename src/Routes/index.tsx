@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Structure } from '../Components';
 import { PAGE } from '../constants'
-import { Characters } from '../Pages'
+import { Characters, Register } from '../Pages'
 
 export const Routes = () => (
   <BrowserRouter>
@@ -14,6 +14,7 @@ export const Routes = () => (
       <Switch>
         <Route path='*' element={<Characters/>}/>
         <Route path={PAGE.CHARACTERS()} element={<Characters/>}/>
+        <Route path={PAGE.REGISTER()} element={<Register/>}/>
       </Switch>
     </Structure>
   </BrowserRouter>
