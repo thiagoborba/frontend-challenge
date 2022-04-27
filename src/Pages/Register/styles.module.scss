@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: calc($baseline * 3) calc($baseline * 2);
+  background-color: $darkGrey;
+  border: 2px solid $lightGrey;
+  width: 570px;
+}
+
+.button {
+  color: $yellow;
+    width: 372px;
+  height: 42px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
