@@ -4,10 +4,11 @@ import cn from 'clsx'
 import Spacing from "../Spacing";
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
+  label?: string;
+  errorMessage?: React.ReactNode;
 }
 
-export const Input: React.FC<Props> = (({ name, className, onChange, onBlur, label, type,  ...props }) => {
+export const Input: React.FC<Props> = (({ name, className, onChange, onBlur, label, type, errorMessage,  ...props }) => {
   function handleBlur(e: React.FocusEvent<HTMLInputElement>): void {
     e.preventDefault()
     onBlur && onBlur(e);
@@ -42,6 +43,7 @@ export const Input: React.FC<Props> = (({ name, className, onChange, onBlur, lab
         type={type}
         {...props}
       />
+      { errorMessage ? <span className={styles.error}>{ errorMessage }</span> : null }
     </div>
   )
 })

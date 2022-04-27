@@ -4,10 +4,11 @@ import cn from 'clsx'
 import Spacing from "../Spacing";
 
 export interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  label?: string
+  label?: string;
+  errorMessage?: React.ReactNode;
 }
 
-export const Textarea: React.FC<Props> = (({ name, className, onChange, onBlur, label,  ...props }) => {
+export const Textarea: React.FC<Props> = (({ name, className, onChange, onBlur, label, errorMessage,  ...props }) => {
   function handleBlur(e: React.FocusEvent<HTMLTextAreaElement>): void {
     e.preventDefault()
     onBlur && onBlur(e);
@@ -38,6 +39,7 @@ export const Textarea: React.FC<Props> = (({ name, className, onChange, onBlur, 
         onChange={handleChange}
         {...props}
       />
+      { errorMessage ? <span className={styles.error}>{ errorMessage }</span> : null }
     </div>
   )
 })

@@ -8,13 +8,14 @@ type Option ={
   value: string;
 }
 
-interface Props extends React.HtmlHTMLAttributes<HTMLSelectElement> {
+interface Props extends  React.SelectHTMLAttributes<HTMLSelectElement> {
   data: Option[],
   label?: string,
-  value?: string
+  value?: string,
+  errorMessage?: React.ReactNode;
 }
 
-export const Select: React.FC<Props> = ({ data, onChange, onBlur, label, className, value, ...props }) => {
+export const Select: React.FC<Props> = ({ data, onChange, onBlur, label, className, value, errorMessage, ...props }) => {
   return (
     <div
       className={cn(styles['container'], className)}
@@ -39,6 +40,7 @@ export const Select: React.FC<Props> = ({ data, onChange, onBlur, label, classNa
           <option key={item.value} value={item.value}>{ item.label }</option>
         )) }
       </select>
+      { errorMessage ? <span className={styles.error}>{ errorMessage }</span> : null }
     </div>
   )
 }
