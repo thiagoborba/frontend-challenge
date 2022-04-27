@@ -27,6 +27,11 @@ const validate = (values: Values) => {
   else if (!EMAIL_REGEX.test(values.email.toLowerCase()))
     errors.email = "E-mail inválido";
 
+  if (!values.password) errors.password = ERROR_DEFAULT
+  if (!values.Rpassword) errors.Rpassword = ERROR_DEFAULT
+  else if (values.Rpassword !== values.password)
+  errors.Rpassword = 'A confirmação de senha precisa ser igual a senha'
+
   return errors;
 };
 
@@ -37,8 +42,6 @@ export const Register: React.FC = () => {
     name: Yup.string().required(ERROR_DEFAULT),
     date: Yup.string().required(ERROR_DEFAULT),
     phone: Yup.string().required(ERROR_DEFAULT),
-    password: Yup.string().required(ERROR_DEFAULT),
-    Rpassword: Yup.string().required(ERROR_DEFAULT),
     character: Yup.string().required(ERROR_DEFAULT),
     file: Yup.mixed().required(ERROR_DEFAULT),
     resume: Yup.string().required(ERROR_DEFAULT)
