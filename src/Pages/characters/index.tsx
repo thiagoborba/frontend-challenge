@@ -102,6 +102,7 @@ export const Characters: React.FC = () => {
         <Title as='h2'>Personagens</Title>
         <Spacing appearance='x-large'/>
         <Input
+          type='search'
           onChange={e => setFilterValue(e.target.value)}
           placeholder='FILTRE POR NOME DO PERSONAGEM'
         />

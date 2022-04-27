@@ -12,8 +12,8 @@ export type Character = {
 	species: string[],
 	vehicles: string[],
 	starships: string[],
-	created: Date,
-	edited: Date,
+	created: string,
+	edited: string,
 	url: string
 }
 
@@ -29,8 +29,8 @@ export type Planet = {
 	population: string,
 	residents: string[],
 	films: string[],
-	created: Date,
-	edited: Date,
+	created: string,
+	edited: string,
 	url: string
 }
 
@@ -50,8 +50,8 @@ export type Starship = {
 	starship_class: string,
 	pilots: string[],
 	films: string[],
-	created: Date,
-	edited: Date,
+	created: string,
+	edited: string,
 	url:string
 }
 
@@ -69,8 +69,8 @@ export type Vehicle = {
 	vehicle_class: string,
 	pilots: string[],
 	films: string[],
-	created: Date,
-	edited: Date,
+	created: string,
+	edited: string,
 	url: string
 }
 
@@ -87,8 +87,8 @@ export type Specie = {
 	language: string,
 	people: string[],
 	films: string[],
-	created: Date,
-	edited: Date,
+	created: string,
+	edited: string,
 	url: string
 }
 
@@ -98,14 +98,14 @@ export type Film = {
 	opening_crawl:string,
 	director: string,
 	producer: string,
-	release_date: string,
+	release_string: string,
 	characters: string[
 	],
 	planets: string[],
 	starships: string[],
 	vehicles: string[],
 	species: string[],
-	created: Date,
-	edited: Date,
+	created: string,
+	edited: string,
 	url: string
 }

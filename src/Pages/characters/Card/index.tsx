@@ -3,12 +3,16 @@ import Card from '../../../Components/Card'
 import { Character } from '../../../Api/models';
 import { Button, Paragraph, Spacing, Title } from '../../../Components';
 import styles from './styles.module.scss'
+import { useNavigate } from 'react-router-dom'
+import { PAGE } from '../../../constants';
 
 type Props = {
   character: Pick<Character, "birth_year" | "homeworld" | 'species' | 'height' | 'vehicles' | 'name'>;
 } 
 
 export const CharacterCard: React.FC<Props> = ({ character, ...props }) => {
+  const navigate = useNavigate()
+
   return (
     <Card
       key={character.name}
@@ -54,7 +58,9 @@ export const CharacterCard: React.FC<Props> = ({ character, ...props }) => {
         </Paragraph>
       )) }
       <Spacing appearance='medium'/>
-      <Button>
+      <Button
+        onClick={() => navigate(PAGE.CHARACTERS_INFO(character.name))}
+      >
         ver detalhes
       </Button>
     </Card>
