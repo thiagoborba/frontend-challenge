@@ -31,6 +31,7 @@ export const FilmCard: React.FC<Props> = ({ film, ...props }) => {
       <Title color='lightSolid' as='h5'>
         informações
       </Title>
+      <Spacing appearance='xx-small'/>
       <Paragraph>
         LANÇADO EM: { dayjs(film.release_date).format('DD/MM/YYY') }
       </Paragraph>

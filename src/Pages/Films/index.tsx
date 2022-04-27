@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Character, Film } from '../../Api/models';
+import { Film } from '../../Api/models';
 import { Grid, Input, Layout, Pagination, Spacing, Title } from '../../Components';
 import { PAGE, PAGE_SIZE } from '../../constants';
 import { GlobalContext } from '../../Context';
@@ -18,7 +18,7 @@ type State ={
 }
 
 export const Films: React.FC = () => {
-  const { state: { planets, species, vehicles, characters, films }} = GlobalContext()
+  const { state: { characters, films }} = GlobalContext()
   const { search } = useLocation()
   const page = search.split('?page=')[1] || 1
   const navigate = useNavigate()

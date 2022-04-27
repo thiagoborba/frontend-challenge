@@ -112,7 +112,7 @@ export const CharacterInfos: React.FC = () => {
                 width: '174px',
                 height: '174px',
                 borderRadius: '50%',
-                background: `conic-gradient(yellow ${appearancesInFilmsPorcentage}%, #7388A95A  ${100 - appearancesInFilmsPorcentage}% 100%)`
+                background: `conic-gradient(yellow ${appearancesInFilmsPorcentage}%, #7388A95A 0)`,
               }}
             >
             </div>

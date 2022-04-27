@@ -5,6 +5,10 @@
   align-items: flex-start;
 }
 
+.paragraph {
+  font-size: $typographySizeSmall;
+}
+
 .name-container {
   display: flex;
   justify-content: space-between;
@@ -15,8 +19,7 @@
   text-align: right;
 }
 
-.grid {
-  width: 100%;
+.grid-screen {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -28,34 +31,31 @@
     border: 2px solid $lightGrey
   }
 }
-  
-.infos {
-  grid-area: 1/1/3/4;
-  > div {
-    display: flex;
-    flex-direction: row;
-    > :not(:first-child) {
-      margin-left: $baseline * 3;
-    }
-  }
-}
-.vehicles {
-  grid-area: 3 / 1 / 6 / 4;
-  > div {
-    display: flex;
-    flex-direction: row;
-    div {
-      width: 50%;
-      height: 100%;
-    }
-  }
-}
-.films {
-  grid-area: 1 / 4 / 6 / 6;
+
+.grid-films {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 24px;
+  grid-row-gap: $baseline;
 }
 
-.pie-container {
+.films {
+  grid-area: 1 / 3 / 6 / 6;
+}
+.opening {
+  grid-area: 1 / 1 / 4 / 3;
+}
+
+.datasheet {
+  grid-area: 4 / 1 / 6 / 3;
+}
+
+.films-container {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+
+  > div {
+    width: 50%;
+  }
 }

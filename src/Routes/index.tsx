@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Structure } from '../Components';
 import { PAGE } from '../constants'
-import { Characters, Register, CharacterInfos, Films } from '../Pages'
+import { Characters, Register, CharacterInfos, Films, FilmInfos } from '../Pages'
 
 export const Routes = () => (
   <BrowserRouter>
@@ -17,7 +17,7 @@ export const Routes = () => (
         <Route path={PAGE.REGISTER()} element={<Register/>}/>
         <Route path={PAGE.CHARACTERS_INFO(':name')} element={<CharacterInfos/>}/>
         <Route path={PAGE.FILMS()} element={<Films/>}/>
-        <Route path={PAGE.FILMS_INFO(':name')} element={<div>asdoinasoidnioansdonas</div>}/>
+        <Route path={PAGE.FILMS_INFO(':name')} element={<FilmInfos />}/>
       </Switch>
     </Structure>
   </BrowserRouter>
