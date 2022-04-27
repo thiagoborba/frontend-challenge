@@ -13,6 +13,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.0",
     "clsx": "^1.1.1",
+    "formik": "^2.2.9",
     "ky": "^0.30.0",
     "ky-universal": "^0.10.1",
     "react": "^18.0.0",

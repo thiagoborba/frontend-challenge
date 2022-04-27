@@ -1,6 +1,7 @@
 export const PAGE = {
   CHARACTERS: () => '/personagens',
-  FILMS: () => '/filmes'
+  FILMS: () => '/filmes',
+  REGISTER: () => '/cadastro'
 }
 
 export const ENDPOINT = {
