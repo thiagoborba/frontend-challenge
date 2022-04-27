@@ -33,14 +33,19 @@ export const Header: React.FC<Props> = (props) => {
         </div>
 
         <div className={styles['buttons-container']}>
-          <Button className={cn(styles.button, {
-            [styles['-active']]: pathname === pageCharacters,
-          })}>
+          <Button
+            onClick={() => navigate(PAGE.CHARACTERS())}
+            className={cn(styles.button, {
+              [styles['-active']]: pathname === pageCharacters,
+            })}>
             Personagens
           </Button>
-          <Button className={cn(styles.button, {
-            [styles['-active']]: pathname === pageFilmes,
-          })}>
+          <Button
+            onClick={() => navigate(PAGE.FILMS())}
+            className={cn(styles.button, {
+              [styles['-active']]: pathname === pageFilmes,
+            })}
+          >
             Filmes
           </Button>
         </div>
