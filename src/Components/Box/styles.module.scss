@@ -3,10 +3,10 @@
 .box {
   display: flex;
   flex-direction: row;
-  align-content: space-between;
+  justify-content: space-between;
   width: 100%;
 
-  *:not(:last-child) {
+  > :not(:last-child) {
     margin-right: calc($baseline * 3);
   }
 }
