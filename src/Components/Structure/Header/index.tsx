@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 import cn from 'clsx'
 import { useLocation } from 'react-router-dom'
 import { PAGE } from '../../../constants'
+import { useNavigate } from 'react-router-dom'
 
 interface Props extends React.HTMLAttributes<HTMLHeadElement> {}
 
@@ -11,6 +12,7 @@ export const Header: React.FC<Props> = (props) => {
   const { pathname } = useLocation()
   const pageCharacters = PAGE.CHARACTERS()
   const pageFilmes = PAGE.FILMS()
+  const navigate = useNavigate()
 
   return (
     <header
@@ -42,7 +44,9 @@ export const Header: React.FC<Props> = (props) => {
             Filmes
           </Button>
         </div>
-        <Button>
+        <Button
+          onClick={() => navigate(PAGE.REGISTER())}
+        >
           Cadastrar-se
         </Button>
       </div>
