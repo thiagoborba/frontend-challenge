@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.box {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  width: 100%;
+
+  *:not(:last-child) {
+    margin-right: calc($baseline * 3);
+  }
+}
