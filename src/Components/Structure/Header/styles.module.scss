@@ -35,8 +35,8 @@
 .buttons-container {
   display: flex;
   align-items: center;
-  &:first-child {
-    margin-right:100px;
+  *:first-child {
+    margin-right: calc($baseline * 3)
   }
 }
 
