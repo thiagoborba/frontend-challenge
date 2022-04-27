@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.container {
+  width: 100%;
+  max-width: 570px;
+  > textarea {
+    color: $lightSolid;
+    font-family: $typographyAlternative;
+    width: inherit;
+    max-width: inherit;
+    height: 129px;
+    background: #303030 0% 0% no-repeat padding-box;
+    border: 2px solid #606060;
+  }
+}
+
+.label {
+  font-family: $typographyAlternative;
+  font-size: $typographySizeXXXSmall;
+  color: $lightSolid;
+}
