@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.link {
+  text-align: left;
+  text-decoration: underline;
+  font-family: $typographyAlternative;
+  color: $lightSolid;
+  text-transform: uppercase;
+  font-size: $typographySizeXXXSmall;
+}
