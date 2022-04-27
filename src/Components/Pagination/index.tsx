@@ -52,22 +52,28 @@ export const Pagination: React.FunctionComponent<Props> = ({
           >
             { firstButtonPage }
           </Button>
-          <Button
-          onClick={() => onChange(secondButtonPage)}
-          className={cn({
-            [styles['page-button']]: isFirstPage || isLastPage
-          })}
-          >
-            {secondButtonPage}
-          </Button>
-          <Button
-            onClick={() => onChange(LastButtonPage)}
-            className={cn({
-              [styles['page-button']]: !isLastPage
-            })}
-          >
-            { LastButtonPage }
-          </Button>
+
+          { numberOfPages >= 2 && (
+            <Button
+              onClick={() => onChange(secondButtonPage)}
+              className={cn({
+                [styles['page-button']]: isFirstPage || isLastPage
+              })}
+              >
+                {secondButtonPage}
+            </Button>
+          ) }
+
+          { numberOfPages >= 3 && (
+            <Button
+              onClick={() => onChange(LastButtonPage)}
+              className={cn({
+                [styles['page-button']]: !isLastPage
+              })}
+            >
+              { LastButtonPage }
+            </Button>
+          )}
         </li>
         <li>
           <Button

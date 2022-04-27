@@ -1,6 +1,6 @@
+import cn from 'clsx'
 import React from 'react'
 import styles from './styles.module.scss'
-import cn from 'clsx'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 

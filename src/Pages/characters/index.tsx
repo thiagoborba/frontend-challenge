@@ -1,42 +1,59 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { initialize } from '../../Api';
 import { Character } from '../../Api/models';
-import { Input, Layout, Pagination, Spacing, Title } from '../../Components'
-import { CharacterCard } from './Card'
-import { Grid } from '../../Components/Grid'
-import styles from './styles.module.scss';
-import { GlobalContext, localStorage } from '../../Context'
+import { Grid, Input, Layout, Pagination, Spacing, Title } from '../../Components';
 import { PAGE, PAGE_SIZE } from '../../constants';
-import { paginate } from '../../utils'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { GlobalContext, localStorage, GlobalState } from '../../Context';
+import { paginate } from '../../utils';
+import { CharacterCard } from './Card';
+import styles from './styles.module.scss';
 
 type State ={
   loading: boolean,
-  filtredCharacters: Character[],
+  filteredCharacters: Character[],
   pagination: {
-    paginate: boolean,
     totalOfPages: number,
     currentPage: number,
-  }
+  },
 }
 
 export const Characters: React.FC = () => {
-  const { state: context, dispatch, ActionTypes } = GlobalContext()
-  const { planets, species, vehicles } = context
-
-  const navigate = useNavigate()
+  const { state: { planets, species, vehicles, characters }, dispatch, ActionTypes } = GlobalContext()
   const { search } = useLocation()
   const page = search.split('?page=')[1] || 1
+  const navigate = useNavigate()
 
-  const [{ pagination, filtredCharacters }, setState] = useState<State>({
+  const [{ pagination, filteredCharacters }, setState] = useState<State>({
     loading: false,
-    filtredCharacters: [],
+    filteredCharacters: [],
     pagination: {
-      paginate: false,
-      totalOfPages: Math.ceil(context?.characters?.length / PAGE_SIZE) || 1,
+      totalOfPages: getTotalOfPages(characters.length),
       currentPage: Number(page),
-    }
+    },
   })
+
+  const [filterValue, setFilterValue] = useState('')
+
+  useEffect(() => {
+    if (filterValue) {
+      filterCards()
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterValue])
+
+  function filterCards () {
+    const filteredCharacters = characters.filter(char => char.name.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()))
+    PaginateCards(filteredCharacters, 1, getTotalOfPages(filteredCharacters.length))
+  }
+
+  function getTotalOfPages (arraylength: number) {
+    return Math.ceil(arraylength / PAGE_SIZE)
+  }
+
+  function updateLocalStorage (data: GlobalState) {
+    window.localStorage.setItem('state', JSON.stringify(data));
+  }
 
   const fetchStarWarsData = useCallback(async () => {
     try {
@@ -45,7 +62,7 @@ export const Characters: React.FC = () => {
         type: ActionTypes.SET_CONTEXT,
         payload: data
       })
-      window.localStorage.setItem('state', JSON.stringify(data));
+      updateLocalStorage(data)
       setState(prevState => ({ ...prevState, pagination: { ...prevState.pagination, paginate: true } }))
     } catch (error) {
       
@@ -56,25 +73,27 @@ export const Characters: React.FC = () => {
     if (!localStorage) {
       fetchStarWarsData()
     } else {
-      setState(prevState => ({ ...prevState, pagination: { ...prevState.pagination, paginate: true } }))
+      PaginateCards(characters, 1, getTotalOfPages(characters.length))
     }
-  }, [fetchStarWarsData, context])
-
+  }, [fetchStarWarsData, characters])
 
   useEffect(() => {
-    if (pagination.paginate) {
-      const filtredChar = paginate(pagination.currentPage, context.characters)
-      setState(prevState => ({
-        ...prevState,
-        filtredCharacters: filtredChar,
-        pagination: { ...prevState.pagination, paginate: false }
-      }))
-    }
-  }, [context.characters, pagination.currentPage, pagination.paginate])
-
-  useEffect(() => {
-    setState(prevState => ({ ...prevState, pagination: { ...prevState.pagination, paginate: true, currentPage:  Number(page) } }))
+    const array = filterValue ? filteredCharacters : characters
+    PaginateCards(array, Number(page), getTotalOfPages(array.length))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
+
+  function PaginateCards (characters: Character[], currentPage: number, totalOfPages: number) {
+    const paginatedCards = paginate(currentPage, characters)
+    setState(prevState => ({
+      ...prevState,
+      filteredCharacters: paginatedCards,
+      pagination:{
+        totalOfPages,
+        currentPage
+      }
+    }))
+  }
 
   return (
     <Layout>
@@ -83,13 +102,14 @@ export const Characters: React.FC = () => {
         <Title as='h2'>Personagens</Title>
         <Spacing appearance='x-large'/>
         <Input
+          onChange={e => setFilterValue(e.target.value)}
           placeholder='FILTRE POR NOME DO PERSONAGEM'
         />
         <Spacing appearance='large'/>
       </div>
 
       <Grid>
-        { filtredCharacters?.map(character => {
+        { filteredCharacters?.map(character => {
           const characterData = {
             name: character.name!,
             birth_year: character.birth_year!,

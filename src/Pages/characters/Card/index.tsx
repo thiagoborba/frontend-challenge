@@ -11,6 +11,7 @@ type Props = {
 export const CharacterCard: React.FC<Props> = ({ character, ...props }) => {
   return (
     <Card
+      key={character.name}
       className={styles.container}
       { ...props }
     >
@@ -46,7 +47,9 @@ export const CharacterCard: React.FC<Props> = ({ character, ...props }) => {
       </Title>
       <Spacing appearance='xx-small'/>
       { character.vehicles.map(vehicle => (
-        <Paragraph>
+        <Paragraph
+          key={vehicle}
+        >
           { vehicle }
         </Paragraph>
       )) }
