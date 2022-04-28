@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { initialize } from '../../Api';
 import { Character } from '../../Api/models';
-import { Grid, Input, Layout, Pagination, Spacing, Title } from '../../Components';
+import { Grid, Input, Layout, Loader, Pagination, Spacing, Title } from '../../Components';
 import { PAGE, PAGE_SIZE } from '../../constants';
-import { GlobalContext, localStorage, GlobalState } from '../../Context';
+import { GlobalContext } from '../../Context';
 import { paginate } from '../../utils';
 import { CharacterCard } from './Card';
 import styles from './styles.module.scss';
@@ -24,7 +24,7 @@ export const Characters: React.FC = () => {
   const page = search.split('?page=')[1] || 1
   const navigate = useNavigate()
 
-  const [{ pagination, filteredCharacters }, setState] = useState<State>({
+  const [{ pagination, filteredCharacters, loading }, setState] = useState<State>({
     loading: false,
     filteredCharacters: [],
     pagination: {
@@ -54,26 +54,24 @@ export const Characters: React.FC = () => {
     return Math.ceil(arraylength / PAGE_SIZE)
   }
 
-  function updateLocalStorage (data: GlobalState) {
-    window.localStorage.setItem('state', JSON.stringify(data));
-  }
-
   const fetchStarWarsData = useCallback(async () => {
     try {
+      setState(prevState => ({ ...prevState, loading: true }))
       const data = await initialize()
       dispatch({
         type: ActionTypes.SET_CONTEXT,
         payload: data
       })
-      updateLocalStorage(data)
       setState(prevState => ({ ...prevState, pagination: { ...prevState.pagination, paginate: true } }))
     } catch (error) {
       
+    } finally {
+      setState(prevState => ({ ...prevState, loading: false }))
     }
   }, [ActionTypes.SET_CONTEXT, dispatch])
 
   useEffect(() => {
-    if (!localStorage) {
+    if (!characters) {
       fetchStarWarsData()
     } else {
       PaginateCards(characters, 1, getTotalOfPages(characters?.length))
@@ -100,6 +98,7 @@ export const Characters: React.FC = () => {
 
   return (
     <Layout>
+      <Loader show={loading}/>
       <div className={styles.container}>
         <Spacing appearance='xx-large'/>
         <Title as='h2'>Personagens</Title>

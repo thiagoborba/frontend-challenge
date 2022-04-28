@@ -1,7 +1,7 @@
 import { PAGE_SIZE } from "../constants";
 
 export function paginate(currentPage: number, array: any[]) {
-  return array.slice(
+  return array?.slice(
     (currentPage - 1) * PAGE_SIZE,
     currentPage * PAGE_SIZE
   )
