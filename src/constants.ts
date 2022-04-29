@@ -18,6 +18,6 @@ export const ENDPOINT = {
 
 export const PAGE_SIZE = 20
 
-export const ERROR_DEFAULT = 'reencha esse campo para continuar'
+export const ERROR_DEFAULT = 'Preencha esse campo para continuar'
 
 export const EMAIL_REGEX = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$/;
