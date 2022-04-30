@@ -46,7 +46,7 @@ export const Characters: React.FC = () => {
   }, [filterValue])
 
   function filterCards () {
-    const filteredCharacters = characters.filter(char => char.name.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()))
+    const filteredCharacters = characters?.filter(char => char.name.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()))
     PaginateCards(filteredCharacters, 1, getTotalOfPages(filteredCharacters?.length))
   }
 

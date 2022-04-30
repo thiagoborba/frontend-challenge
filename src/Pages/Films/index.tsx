@@ -47,8 +47,8 @@ export const Films: React.FC = () => {
   }, [filterValue])
 
   function filterCards () {
-    const filteredFilms = films.filter(char => char.title.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()))
-    PaginateCards(filteredFilms, 1, getTotalOfPages(filteredFilms.length))
+    const filteredFilms = films?.filter(char => char.title.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()))
+    PaginateCards(filteredFilms, 1, getTotalOfPages(filteredFilms?.length))
   }
 
   function getTotalOfPages (arraylength: number) {
@@ -88,7 +88,7 @@ export const Films: React.FC = () => {
       </div>
 
       <Grid>
-        { filteredFilms.map(film => (
+        { filteredFilms?.map(film => (
           <FilmCard film={{
             director: film.director,
             episode_id: film.episode_id,
