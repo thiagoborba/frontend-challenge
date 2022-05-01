@@ -22,7 +22,7 @@ export const FilmCard: React.FC<Props> = ({ film, ...props }) => {
     >
       <Spacing appearance='xx-small'/>
       <Title as='h4'>
-        { film.title }
+        { film.title.toLocaleLowerCase() }
       </Title>
       <Paragraph>
         EPISÓDIO {film.episode_id}

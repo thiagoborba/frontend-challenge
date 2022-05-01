@@ -21,7 +21,7 @@ export const CharacterCard: React.FC<Props> = ({ character, ...props }) => {
     >
       <Spacing appearance='xx-small'/>
       <Title as='h4'>
-        { character.name }
+        { character.name.toLocaleLowerCase() }
       </Title>
       <Spacing appearance='medium'/>
       <Title color='lightSolid' as='h5'>

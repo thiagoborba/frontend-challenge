@@ -27,7 +27,7 @@ export const FilmInfos: React.FC = () => {
       >
         <div>
           <Title as='h2'>
-            {film?.title}
+            {film?.title.toLocaleLowerCase()}
           </Title>
           <Paragraph className={styles.paragraph}>
             Episódio {film?.episode_id}

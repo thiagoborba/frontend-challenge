@@ -31,7 +31,7 @@ export const CharacterInfos: React.FC = () => {
         className={styles['name-container']}
       >
         <Title as='h2'>
-          {character?.name}
+          {character?.name.toLocaleLowerCase()}
         </Title>
         <div className={styles['date-container']}>
           <Paragraph> ATUALIZADA EM: {updateDate} ás {updateHour}</Paragraph>
